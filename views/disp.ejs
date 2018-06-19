@@ -1,0 +1,91 @@
+<body>
+<head>
+    <title>List of Plants</title>
+
+    <script src="angular/angular.min.js"> </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .header {
+            width:100%;
+            background-color: #111;
+            color: #D3FA36;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            border-bottom:5px solid #D3FA36;
+        }
+
+        /* Style the side navigation */
+        .sidenav {
+            height:100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow: hidden;
+            padding-top:100px;
+
+        }
+
+
+        /* Side navigation links */
+        .sidenav a {
+            color:  #D3FA36;
+            padding: 16px;
+            text-decoration: none;
+            display: block;
+            border-right:5px solid #D3FA36;
+
+        }
+
+        /* Change color on hover */
+        .sidenav a:hover {
+            background-color:  #D3FA36;
+            color: black;
+            border-bottom:3px solid #f1f1f1;
+        }
+
+        /* Style the content */
+        .content {
+            margin-left: 200px;
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">List of Plants</div>
+<div class="content">
+  <table class="plant" border="1">
+      <thead>
+      <td>ID:</td>
+      <td>Name:</td>
+      <td>Type:</td>
+      <td>Cost:</td>
+      <td>Quantity:</td>
+      </thead>
+<% for(var i=0; i<plant.length; i++) {%>
+  	<tr class="plant">
+      <td><%=  plant[i].plantid+"."%></td>
+      <td><%=plant[i].plantname%></td>
+	<td><%=plant[i].type%></td>
+	<td><%=plant[i].cost%></td>
+	<td><%= plant[i].qty%></td>
+    </tr>
+<% } %>
+</table>
+</div>
+<div class="sidenav">
+    <a href="index.html">Back</a>
+</div>
+</body>
+</html>

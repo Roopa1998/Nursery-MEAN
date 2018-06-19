@@ -1,0 +1,110 @@
+<html>  
+<head>
+<script src="angular/angular.min.js"> </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .header {
+            width:100%;
+            background-color: #111;
+            color: #D3FA36;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            border-bottom:5px solid #D3FA36;
+        }
+
+        /* Style the side navigation */
+        .sidenav {
+            height:100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow: hidden;
+            padding-top:100px;
+
+        }
+
+
+        /* Side navigation links */
+        .sidenav a {
+            color:  #D3FA36;
+            padding: 16px;
+            text-decoration: none;
+            display: block;
+            border-right:5px solid #D3FA36;
+
+        }
+
+        /* Change color on hover */
+        .sidenav a:hover {
+            background-color:  #D3FA36;
+            color: black;
+            border-bottom:3px solid #f1f1f1;
+        }
+
+        /* Style the content */
+        .content {
+            margin-left: 200px;
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<script> var myModule = angular.module("myApp",[])  </script>
+<body ng-app="myApp">
+<div class="header">Search</div>
+<div class="content">
+<form  ng-controller='appController' ng-submit="send()">
+Plant ID: <input type="text" name="plantid" ng-model="data.plantid">  <br>
+<input type="submit" value="Submit">  
+<div><p>The Plant id searched for is</p></div><br>
+       <div><pre>{{response.data}}</pre>  </div>
+</form>
+    </div>
+    <div class="sidenav">
+        <a href="index.html">Back</a>
+    </div>
+
+<script>
+	 myModule.controller ("appController",
+        function appController($scope, $http) {
+            /*$http directive is used to communicate to the server */
+            $scope.data = {}
+            $scope.response = {}
+			
+            $scope.send = function () {
+                /*executed when search is clicked*/          
+				console.log($scope.data.plantid);
+                var posting = $http({
+			/*posting to /process_get  */
+                    //method: 'GET',
+                    //url: '/process_get',
+                    //params: $scope.data,
+			/*posting to /process_post*/
+                    method: 'GET',
+                    url: '/search',
+                    data: $scope.data,
+                    
+                }).then (function (response) {
+                    /*executed when server responds back*/
+                    console.log(response);
+                    $scope.response.data = response.data;
+                },function (error){
+					console.log(error);
+			});
+            }
+        });
+    </script>
+
+</body>  
+</html>  

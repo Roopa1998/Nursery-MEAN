@@ -1,0 +1,78 @@
+<html >
+<script src="angular/angular.min.js"> </script>
+<head><title>Remove Plant</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+    width:100%;
+    background-color: #111;
+    color:D3FA36;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    border-bottom:5px solid #D3FA36;
+}
+
+/* Style the side navigation */
+.sidenav {
+    height:100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow: hidden;
+    padding-top:100px;
+    
+}
+
+
+/* Side navigation links */
+.sidenav a {
+    color: D3FA36;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+     border-right:5px solid #D3FA36;
+
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+    background-color: D3FA36;
+    color: black;
+    border-bottom:3px solid #f1f1f1;
+}
+
+/* Style the content */
+.content {
+    margin-left: 200px;
+    padding-left: 20px;
+}
+
+</style>
+</head>
+<script src="angular/angular.min.js"> </script>
+<body ng-app>
+    
+<div class="header"> Remove a plant from stock </div>    
+<div class="sidenav">  
+<a href="index.html">Back</a>
+</div>
+<div class="content">
+<form action="delete" method="get">  
+Plant ID: <input type="text" name="plantid">  <br>  
+<input type="submit" value="Submit">  
+</form>  
+</div>
+</body>
+</html>
+
